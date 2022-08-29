@@ -22,7 +22,7 @@ const cart3 = [
 ];
 
 function sendProducts(arr, distance) {
-  // Si el producto tiene un código promocional, hacer un 5% de descuento sobre su precio, no sobre el total
+  // Si el total del carrito es superior a 2000, hacer un 5% de descuento sobre el total
   let total = 0;
 
   for (i = 0; i < arr.length; i++) {
