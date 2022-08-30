@@ -17,6 +17,7 @@ const products = [
 function buyProduct(arr, productName, qty) {
   /**
    * Recibimos el nombre del producto y restamos de su stock el stock recibido en el parámetro "qty".
+   * Si el stock llega a 0, debemos eliminar el producto del array.
    */
 }
 
