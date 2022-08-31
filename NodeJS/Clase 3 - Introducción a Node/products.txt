@@ -1,0 +1,1 @@
+["Parlantes", "Teclado", "Monitor"]
