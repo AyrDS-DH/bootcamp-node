@@ -29,7 +29,7 @@ allUsers()
 
 
 
-//Async/await
+//Async/await ✅
 const handlerUsers = async () => {
    console.log('cargando...');
 
