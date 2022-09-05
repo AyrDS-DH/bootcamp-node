@@ -36,7 +36,7 @@ const allUsers = () => {
       if (true) {
          setTimeout(() => {
             resolve(users);
-         }, 2000);
+         }, 3000);
       } else {
          reject('No se pueden obtener todos los usuarios');
       }
@@ -45,10 +45,10 @@ const allUsers = () => {
 
 const allMovies = () => {
    return new Promise((resolve, reject) => {
-      if (false) {
+      if (true) {
          setTimeout(() => {
             resolve(movies);
-         }, 3000);
+         }, 2000);
       } else {
          reject('No se pueden obtener todas las peliculas');
       }

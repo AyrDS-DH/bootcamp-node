@@ -15,22 +15,24 @@ function manejoDeUsuarios(id, res) {
             }
          })
       }
-
    });
 }
 
 //Promesas - then - catch ✅
 allUsers()
-   .then(data => console.log(data))
+   .then(data => {
+      return data.filter(data => data.id !== 1)
+   })
+   .then(arr => arr.filter(el => el.id !== 2))
+   .then(arr2 => console.log(arr2))
    .catch(err => console.log(err))
    .finally(() => {
       console.log('Finally');
-   });
-
+   })
 
 
 //Async/await ✅
-const handlerUsers = async () => {
+const handlerUsers = async (req, res) => {
    console.log('cargando...');
 
    try {
@@ -39,6 +41,8 @@ const handlerUsers = async () => {
       console.log(users);
    } catch (msg) {
       console.log(msg);
+   } finally {
+      console.log('Finally try catch');
    }
 }
 
