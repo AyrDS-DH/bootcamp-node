@@ -46,6 +46,7 @@ const handlerUsers = async (req, res) => {
    }
 }
 
+handleUsers();
 
 //Promise.all - Es lo más optimo ✅
 const promises = async () => {
