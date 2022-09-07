@@ -1,8 +1,12 @@
 const express = require('express')
 const app = express();
 
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json());
+app.use(express.urlencoded({ extended: true })) //Esto es en el caso de trabajar con formularios
+app.use(express.json()); //Este metodo debe estar en el archivo index/app para que se apliquen a todas las rutas
+
+app.get('/', (req, res) => {
+   res.send('get')
+});
 
 
 app.put('/', (req, res) => {
