@@ -1,0 +1,52 @@
+[
+   {
+      "id": 1,
+      "nombre": "Jabón",
+      "precio": 100
+   },
+   {
+      "id": 2,
+      "nombre": "Leche",
+      "precio": 200
+   },
+   {
+      "id": 3,
+      "nombre": "Manteca",
+      "precio": 250
+   },
+   {
+      "id": 4,
+      "nombre": "Pasta de dientes",
+      "precio": 300
+   },
+   {
+      "id": 5,
+      "nombre": "Fideos",
+      "precio": 150
+   },
+   {
+      "id": 6,
+      "nombre": "Carne",
+      "precio": 900
+   },
+   {
+      "id": 7,
+      "nombre": "Atun",
+      "precio": 500
+   },
+   {
+      "id": 8,
+      "nombre": "Gaseosa",
+      "precio": 400
+   },
+   {
+      "id": 9,
+      "nombre": "Galletitas",
+      "precio": 100
+   },
+   {
+      "id": 10,
+      "nombre": "Agua",
+      "precio": 100
+   }
+]
