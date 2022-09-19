@@ -24,5 +24,9 @@ app.get('/',(req,res) => {
 })
 
 app.listen(3000,() => {
+    db.connect(function(err) {  
+        if (err) throw err;  
+        console.log("Conectado a la db!");  
+});  
     console.log("Servidor corriendo en puerto 3000")
 })
