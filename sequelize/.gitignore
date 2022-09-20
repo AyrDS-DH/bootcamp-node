@@ -1,4 +1,3 @@
 .gitignore
 node_modules
 database
-server.js
