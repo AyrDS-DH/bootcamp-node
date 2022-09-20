@@ -20,6 +20,44 @@ try{
 }   
 })
 
+app.get('/update',async (req,res) => {
+try{
+    const updatepersona = await db.Persona.update({
+        nombre: "Hernan",
+        email: "hernan@cencosud.com"
+        },
+        {
+            where: {
+                nombre: "Juan"
+            }
+        })
+    res.send("Persona actualizada")
+} catch(err){
+    console.log("Err",err.sqlMessage)
+    res.send("Completa todos los datos requeridos")
+}   
+})
+
+app.get('/delete',async (req,res) => {
+try{
+    const deletepersona = await db.Persona.destroy({
+        where: {
+                id_persona: "4"
+            }
+        })
+    console.log("Delete",deletepersona)    
+    res.send("Persona borrada")
+} catch(err){
+    console.log("Err",err.sqlMessage)
+    res.send("Completa todos los datos requeridos")
+}   
+})
+
+
+
+
+
+
 app.get('/find',async (req,res) => {
 try{
         const findpersona = await db.Persona.findAll({
@@ -33,7 +71,7 @@ try{
 })
 
 
- 
+
 
 app.listen(3000, async () => {
     sequelize.sync({force: false}) //danger
