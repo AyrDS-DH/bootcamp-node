@@ -7,15 +7,17 @@ const db = mysql.createConnection({
     user: "root",
     password: "",
     port: "3306",
-    database: "movies_db",
+    database: "usuarios",
     host: "localhost"
 })
 
 app.get('/',(req,res) => {
     const title = "Avatar"
-    db.query(`SELECT * FROM movies`, (err,result) => {
+    const sql = `SELECT * FROM registrados`
+
+    db.query(sql, (err,result) => {
     if(result) {
-        console.table(result);
+        console.log(result[0].estado);
         res.send(result);
     }
     else console.log(err)
