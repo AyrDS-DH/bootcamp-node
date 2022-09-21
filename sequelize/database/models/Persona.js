@@ -1,3 +1,5 @@
+
+
 module.exports = (sequelize, DataTypes) => {
 
     const alias = "Persona"
@@ -32,6 +34,13 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     const Persona = sequelize.define(alias,cols,extra)
+    Persona.associate = (models) => {
+        Persona.belongsTo(models.Equipo,{
+            as: "equipopersona",
+            foreignKey: "equipo_id",
+        })
+    }
+
 
     return Persona
 
