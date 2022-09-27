@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         email: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         edad: {
@@ -28,17 +28,15 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     const extra = {
-        timestamps: true,
-        createdAt: "Creado",
-        updatedAt: "Actualizado"
+        timestamps: false
     }
 
     const Persona = sequelize.define(alias,cols,extra)
     Persona.associate = (models) => {
-        Persona.belongsTo(models.Equipo,{
-            as: "equipopersona",
-            foreignKey: "equipo_id",
-        })
+        Persona.hasOne(models.Cart,{
+            as: "cartpersona",
+            foreignKey: "cart_id"
+               })
     }
 
 

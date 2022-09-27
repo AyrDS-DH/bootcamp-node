@@ -1,3 +1,5 @@
+const { INTEGER } = require("sequelize")
+
 module.exports = (sequelize, DataTypes) => {
 
     const alias = "Equipo"
@@ -23,12 +25,12 @@ module.exports = (sequelize, DataTypes) => {
             as: "personaequipo",
             foreignKey: "equipo_id"
         })
-    Equipo.belongsToMany(models.Marca,{
-            as: "marcaequipo",
-            through: "equipo_marca",
-            foreignKey: "equipo_id",
-            otherKey: "marca_id"
-        })
+    // Equipo.belongsToMany(models.Marca,{
+    //         as: "marcaequipo",
+    //         through: "equipo_marca",
+    //         foreignKey: "equipo_id",
+    //         otherKey: "marca_id"
+    //     })
     }
     return Equipo
 }

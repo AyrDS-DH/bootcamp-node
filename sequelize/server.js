@@ -1,10 +1,12 @@
 const express = require('express')
 const { sequelize } = require('./database/models')
 const db = require('./database/models')
-
-
+const { parseparameters } = require('./database/utils/update')
+const Op = db.Sequelize.Op
 
 const app = express()
+
+app.use(express.json())
 
 app.get('/create',async (req,res) => {
 
@@ -35,12 +37,21 @@ app.get('/create',async (req,res) => {
 })
 
 app.get('/buscar',async (req,res) => {
-   try{
-        const buscar = await db.Equipo.findAll({
-              include: [{ association: "equipomarca"}]
+   const keyword = req.query.keyword
+    try{
+        const buscar = await db.Persona.findAll({
+            where:{
+                nombre: {
+                    [Op.like]: '%'+ `${keyword}`
+                }
+            }
         })
-   
-    res.send(buscar)
+        // const retByKey = await db.Product.findAll({where : {[Op.or]: [
+        //         {title : keyWord},
+        //         {description : keyWord}]},
+        //         include: [{association: 'productocategoria', 
+        //                 where: {name: keyWord}}]})
+        res.send(buscar)
 
 } catch(err){
     console.log("Err",err.sqlMessage)
@@ -48,25 +59,29 @@ app.get('/buscar',async (req,res) => {
 }   
 })
 
-app.get('/setear',async (req,res) => {
+app.get('/setcart',async (req,res) => {
    try{
-
-   
-    res.send(setmarca)
+    const setcart = db.Cart.create({
+        cart_id: 1,
+        cart: [{nombre: "leche",cant: "1"}]
+    }).then(data => res.send("Cart Asignada"))
+    .catch(err => res.send("Debe ser clave Única"))   
 } catch(err){
     console.log("Err",err.sqlMessage)
     res.send("Completa todos los datos requeridos")
 }   
 })
 
-app.get('/crearsetear',async (req,res) => {
+app.post('/crearsetear',async (req,res) => {
+
+    const parameters = req.body
+    console.log(req.body)
+
+    const obj = await parseparameters(parameters)
+
    try{
-
-   
-   
- 
-
-
+        const updatecart = await db.Persona.update(obj,{where:{id_persona:1}})
+        res.send("Actualizado")
 } catch(err){
     console.log("Err",err)
     res.send("Completa todos los datos requeridos")
@@ -79,6 +94,6 @@ app.get('/crearsetear',async (req,res) => {
 
 
 app.listen(3000, async () => {
-    sequelize.sync() //danger
+    sequelize.sync({alter: true}) //danger
     console.log("Server corriendo en puerto 3000")
 })
