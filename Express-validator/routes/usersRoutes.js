@@ -13,4 +13,6 @@ router.post('/new', [
    handleErrors
 ], createUser);
 
+router.post('/test', [check('[]').custom((value, { req }) => console.log(req.body))], createUser)
+
 module.exports = router;
