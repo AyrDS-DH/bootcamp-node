@@ -1,10 +1,8 @@
 const jwt = require('jsonwebtoken');
-const { request } = require('express')
+const extractToken = require('../helpers/extractToken');
 
-const verifyJWT = (req = request, res, next) => {
-
-   // console.log(req.headers);
-   const { authorization: token } = req.headers;
+const verifyJWT = (req, res, next) => {
+   const token = extractToken(req);
 
    try {
       const { name } = jwt.verify(token, process.env.JWT_PRIVATE);
@@ -19,7 +17,6 @@ const verifyJWT = (req = request, res, next) => {
          msg: "Token invalido"
       })
    }
-
 }
 
 module.exports = verifyJWT;
