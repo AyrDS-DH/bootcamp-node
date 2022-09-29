@@ -1,7 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
 
-    const alias = "equipo_marca"
+    const alias = "Equipo_marca"
     const cols = {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         equipo_id: {
             type: DataTypes.INTEGER,
         },
@@ -11,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     }
     const extra = {
         tableName: "equipo_marca",
-        timestamps: false,
+        timestamps: true,
+        createdAt: "creado",
+        updatedAt: false
 
     }
 
